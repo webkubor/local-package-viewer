@@ -1,0 +1,39 @@
+# Node.js 的依赖文件
+node_modules/
+
+# pnpm 的依赖文件
+.pnpm/
+
+# yarn 的依赖文件
+.yarn/
+
+# npm 和 yarn 的锁文件
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# 环境变量配置文件
+.env
+.env.local
+.env.*.local
+
+# 运行时生成的日志文件
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 操作系统自动生成的文件
+.DS_Store
+Thumbs.db
+
+# TypeScript 编译输出
+dist/
+build/
+
+# IDE 或编辑器配置文件
+.vscode/
+.idea/
+
+# 临时文件
+*.swp
+*.swo

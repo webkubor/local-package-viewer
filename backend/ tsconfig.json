@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "resolveJsonModule": true,
+      "types": ["node"]  // 确保包括 node 类型
+    },
+    "include": [
+      "src/**/*",
+      "node_modules/@types"
+    ]
+  }

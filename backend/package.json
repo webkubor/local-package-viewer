@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "serve": "ts-node src/app.ts",
+    "start": "nodemon src/app.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@koa/cors": "^5.0.0",
+    "child_process": "^1.0.2",
+    "koa": "^2.15.3",
+    "koa-router": "^13.0.1"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.15.0",
+    "@types/koa-router": "^7.4.8",
+    "@types/koa__cors": "^5.0.0"
+  }
+}
