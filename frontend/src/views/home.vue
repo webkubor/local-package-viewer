@@ -1,7 +1,6 @@
 <template>
     <div class="welcome">
       <h1>local-package-viewer</h1>
-      <button>222</button>
       <Button @click="goToYarnList">Yarn List</Button>
       <Button @click="goToNpmList">NPM List</Button>
       <Button @click="goToPnpmList">PNPM List</Button>
