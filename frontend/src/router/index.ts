@@ -17,9 +17,9 @@ const routes:RouteRecordRaw[] = [
         component: () => import('@/views/yarn/list.vue')
     },
     {
-        path: "/yarn/list",
-        name: "YarnList",
-        component: () => import('@/views/yarn/list.vue')
+        path: "/pnpm/list",
+        name: "PnpmList",
+        component: () => import('@/views/pnpm/list.vue')
     }
 ]
 
