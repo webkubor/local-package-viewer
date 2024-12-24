@@ -10,17 +10,22 @@
   },
   "dependencies": {
     "@primevue/themes": "^4.2.5",
-    "axios": "^1.7.9",
-    "flyio": "^0.6.14",
+    "kbor-logger": "^1.0.9",
     "primevue": "^4.2.5",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "vue-clipboard3": "^2.0.0"
   },
   "devDependencies": {
     "@primevue/auto-import-resolver": "^4.2.5",
+    "@types/node": "^22.10.2",
     "@vitejs/plugin-vue": "^5.2.1",
+    "flyio": "^0.6.14",
+    "sass": "^1.83.0",
+    "sass-loader": "^16.0.4",
     "typescript": "~5.6.2",
     "unplugin-vue-components": "^0.28.0",
     "vite": "^6.0.1",
+    "vue-router": "^4.5.0",
     "vue-tsc": "^2.1.10"
   }
 }
