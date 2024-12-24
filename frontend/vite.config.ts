@@ -12,13 +12,6 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     }
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@import "@/styles/index.scss";`
-      }
-    }
-  },
   plugins: [vue(),
     Components({
       resolvers: [PrimeVueResolver()],
