@@ -20,4 +20,5 @@ function goToNpmList() {
 function goToPnpmList() {
   router.push('/pnpm/list')
 }
+
 </script>

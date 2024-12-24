@@ -7,10 +7,12 @@ import '@/styles/index.scss';
 import router from './router';
 import ToastService from 'primevue/toastservice';
 
+
+
+const app = createApp(App);
 window.$logger = klogger();
 window.$logger?.success('当前环境', import.meta.env.MODE)
-
-createApp(App).use(PrimeVue, {
+app.use(PrimeVue, {
     theme: {
         preset: Aura,
         option: {
