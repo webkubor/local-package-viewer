@@ -13,9 +13,9 @@ class PackageController {
     try {
       const { type = 'yarn' } = ctx.query as PackageManager;
       const command = {
-        yarn: 'yarn global list --json',
-        npm: 'npm list -g --json',
-        pnpm: 'pnpm list -g --json'
+        yarn: 'yarn global list  --json',
+        npm: 'npm list -g --depth=0 --json',
+        pnpm: 'pnpm list -g  --json'
       }[type];
 
       const { stdout, stderr } = await exec(command);
@@ -26,6 +26,7 @@ class PackageController {
       }
       
       const data = JSON.parse(stdout);
+      console.log(data)
       ctx.body = { dependencies: data };
     } catch (error) {
       ctx.status = 500;
