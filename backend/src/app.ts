@@ -1,33 +1,30 @@
 // backend/src/app.ts
 import Koa from 'koa';
-import Router from 'koa-router';
 import cors from '@koa/cors';
-import npmController from './controller/npmController';
-import yarnController from './controller/yarnController';
-import pnpmController from './controller/pnpmController';
+import bodyParser from 'koa-bodyparser';
+import packageRoutes from './routes/package';
 
 const app = new Koa();
-const router = new Router();
 
-// 启用 CORS 支持，解决前后端跨域问题
+// 中间件
 app.use(cors());
+app.use(bodyParser());
 
-// 设置路由
-router.get('/', 
-  async (ctx: any) => {
+// 欢迎路由
+app.use(async (ctx, next) => {
+  if (ctx.path === '/') {
     ctx.body = 'Hello, welcome to localpackageviewer!';
+  } else {
+    await next();
   }
-);
+});
 
-router.get('/npm/global', npmController.getGlobalDependenciesNpm);
-router.get('/yarn/global', yarnController.getGlobalDependenciesYarn);
-router.get('/pnpm/global', pnpmController.getGlobalDependenciesPnpm);
-
-// 使用路由
-app.use(router.routes()).use(router.allowedMethods());
+// 使用包管理路由
+app.use(packageRoutes.routes());
+app.use(packageRoutes.allowedMethods());
 
 // 设置端口
-const port = 3000;
+const port = process.env.PORT || 5200;
 app.listen(port, () => {
-  console.log(`Koa server is running at http://localhost:${port}`);
+  console.log(`Server is running at http://localhost:${port}`);
 });

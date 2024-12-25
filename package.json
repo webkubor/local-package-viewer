@@ -6,11 +6,21 @@
     "pages": "cd frontend && pnpm run dev ",
     "interface": "cd backend && pnpm run start"
   },
-  "keywords": ["pnpm","npm", "yarn", "pakage.json", "package-manager"],
+  "keywords": [
+    "pnpm",
+    "npm",
+    "yarn",
+    "pakage.json",
+    "package-manager"
+  ],
   "author": "webkubor@163.com",
   "license": "ISC",
   "description": "",
   "devDependencies": {
     "concurrently": "^9.1.0"
+  },
+  "dependencies": {
+    "@types/koa-router": "^7.4.8",
+    "koa-router": "^13.0.1"
   }
 }

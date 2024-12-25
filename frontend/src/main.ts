@@ -6,6 +6,7 @@ import {klogger} from "kbor-logger";
 import '@/styles/index.scss';
 import router from './router';
 import ToastService from 'primevue/toastservice';
+import ConfirmationService from 'primevue/confirmationservice';
 
 
 
@@ -18,4 +19,4 @@ app.use(PrimeVue, {
         option: {
             prefix: 'webkubor',
         }
-    }}).use(ToastService).use(router).mount('#app')
+    }}).use(ToastService).use(router).use(ConfirmationService).mount('#app')
