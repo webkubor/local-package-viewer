@@ -12,25 +12,48 @@ class PackageController {
   async getGlobalDependencies(ctx: any) {
     try {
       const { type = 'yarn' } = ctx.query as PackageManager;
+      console.log(`正在获取 ${type} 全局依赖列表...`);
+      
       const command = {
-        yarn: 'yarn global list  --json',
+        yarn: 'yarn global list --json',
         npm: 'npm list -g --depth=0 --json',
-        pnpm: 'pnpm list -g  --json'
+        pnpm: 'pnpm list -g --json'
       }[type];
-
+      
+      console.log(`执行命令: ${command}`);
+      
       const { stdout, stderr } = await exec(command);
-      if (stderr) {
+      
+      // npm 命令即使成功也可能输出一些警告信息到 stderr
+      if (stderr && type !== 'npm') {
+        console.error(`命令执行出错: ${stderr}`);
         ctx.status = 500;
         ctx.body = { error: stderr };
         return;
       }
       
-      const data = JSON.parse(stdout);
-      console.log(data)
-      ctx.body = { dependencies: data };
-    } catch (error) {
+      // 确保 stdout 不为空
+      if (!stdout || stdout.trim() === '') {
+        console.error('命令执行成功但没有输出');
+        ctx.status = 500;
+        ctx.body = { error: '命令执行成功但没有输出' };
+        return;
+      }
+      
+      try {
+        const data = JSON.parse(stdout);
+        console.log(`成功解析 ${type} 依赖数据`);
+        ctx.body = { dependencies: data };
+      } catch (parseError: any) {
+        console.error(`JSON解析错误: ${parseError}`);
+        console.error(`原始输出: ${stdout}`);
+        ctx.status = 500;
+        ctx.body = { error: `无法解析JSON: ${parseError.message}`, stdout };
+      }
+    } catch (error: any) {
+      console.error(`获取依赖列表失败: ${error.message}`);
       ctx.status = 500;
-      ctx.body = { error: '无法获取依赖列表' };
+      ctx.body = { error: `无法获取依赖列表: ${error.message}` };
     }
   }
 
